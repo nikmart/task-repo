@@ -91,6 +91,7 @@ const intro = () => {
     
     g.textAlign = 'center';
     
+    g.clearRect(0, 0, c.width, c.height); // [1]
     g.fillText('Play Snake - press Enter to Start', 320, 320);
 }
 
@@ -110,11 +111,12 @@ const gameOver = () => {
     g.textAlign = 'center';
     g.fillText(`Game over! You earned ${point} points.`, 320, 320);
     g.fillText(`Press Enter to play again.`, 320, 360);
-    setTimeout(() => { 
+    setTimeout(() => {
         if(!f) {
+            console.log('run intro');
             intro();
         }
-    }, 10000);
+    }, 2000);
 }
 
 const checkFoodCollision = () => {
@@ -171,3 +173,6 @@ window.addEventListener('keydown', (e) => {
 
 intro();
 
+/// REFERENCES ///
+
+// [1] https://stackoverflow.com/questions/2142535/how-to-clear-the-canvas-for-redrawing
